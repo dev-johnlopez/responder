@@ -8,6 +8,7 @@ from sendgrid import SendGridAPIClient
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_security import Security, SQLAlchemyUserDatastore, current_user
+from elasticsearch import Elasticsearch
 
 
 app = Flask(__name__)
@@ -20,14 +21,19 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.wsgi_app = ProxyFix(app.wsgi_app)
     app.config.from_object(config_class)
+    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
+        if app.config['ELASTICSEARCH_URL'] else None
 
     db.init_app(app)
     migrate.init_app(app, db)
 
-    from app.views import email_bp, errors_bp, crm_bp
-    app.register_blueprint(email_bp)
+    from app.views import email_bp, errors_bp, crm_bp, dashboard_bp, marketing_bp, deals_bp
+    app.register_blueprint(dashboard_bp)
     app.register_blueprint(errors_bp)
     app.register_blueprint(crm_bp, url_prefix="/crm")
+    app.register_blueprint(email_bp, url_prefix="/email")
+    app.register_blueprint(marketing_bp, url_prefix="/marketing")
+    app.register_blueprint(deals_bp, url_prefix="/deals")
 
     from app.models import User, Role
 

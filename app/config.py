@@ -26,3 +26,4 @@ class Config(object):
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
     ADMINS = ['john@johnlopez.org']
     SECURITY_TRACKABLE = True
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')

@@ -34,8 +34,8 @@
 <body class="fixed-left">
   <!-- Begin page -->
   <div id="wrapper">
-    {% include 'layout/components/topbar.html' %}
-    {% include 'layout/components/sidebar.html' %}
+    {% include 'common/components/topbar.html' %}
+    {% include 'common/components/sidebar.html' %}
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
@@ -43,17 +43,49 @@
         <!-- Start content -->
         <div class="content">
           <div class="container-fluid">
+            {% if title is defined %}
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                      <div class="row">
+                        <div class="col-6">
+                          <h4 class="page-title">{{ title }}</h4>
+                          <br />
+                          <ol class="breadcrumb">
+                            {% block breadcrumb %} {% endblock %}
+                          </ol>
+                        </div>
+                        <div class="col-6">
+                          <div class="dropdown pull-right">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="actionsMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Actions
+                            </button>
+                            {% block page_actions %}
+                              <div class="dropdown-menu" aria-labelledby="actionsMenu">
+                                <a href="#" class="dropdown-item">Action</a>
+                                <a href="#" class="dropdown-item">Another action</a>
+                                <a href="#" class="dropdown-item">Something else here</a>
+                              </div>
+                            {% endblock %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             {% block content %}{% endblock %}
           </div>
         </div>
         {% block footer %}
-          {% include 'layout/components/footer.html' %}
+          {% include 'common/components/footer.html' %}
         {% endblock %}
     </div>
     <!-- ============================================================== -->
     <!-- END right Content here -->
     <!-- ============================================================== -->
-    {% include 'layout/components/rightbar.html' %}
+    {% include 'common/components/rightbar.html' %}
   </div>
   <!-- end wrapper -->
 
