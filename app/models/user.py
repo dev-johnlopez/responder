@@ -1,6 +1,8 @@
-from app import db
+from app import app, db
+from app.models.account import Account
 from flask import current_app
-from flask_security import UserMixin
+from flask_security import UserMixin, user_registered
+from app.services.sendgrid import create_sendgrid_user
 import json
 from time import time
 
@@ -14,7 +16,12 @@ class User(db.Model, UserMixin):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
+    account = db.relationship("Account", back_populates="users")
     email = db.Column(db.String(255), unique=True)
+
+    first_name = db.Column(db.String(255))
+    last_name = db.Column(db.String(255))
 
     password = db.Column(db.String(255))
     active = db.Column(db.Boolean())
@@ -30,6 +37,11 @@ class User(db.Model, UserMixin):
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
+        if self.account is None:
+            self.account = Account()
 
     def __repr__(self):
-        return '%s' % (self.email)
+        return '{} {}'.format(self.first_name, self.last_name)
+
+    def is_admin(self):
+        return self.email in current_app.config['ADMINS']

@@ -1,0 +1,95 @@
+{% extends 'common/backend_template.html' %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="{{ url_for('settings.index') }}">Settings</a></li>
+<li class="breadcrumb-item active">My Profile</li>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-xl-3 col-lg-4">
+        <div class="text-center card-box">
+            <div class="member-card">
+
+                <div class="">
+                    <h5 class="m-b-5">{{ user }}</h5>
+                    {#<p class="text-muted">Identified</p>#}
+                </div>
+
+                {#<button type="button" class="btn btn-success btn-sm w-sm waves-effect m-t-10 waves-light">Text</button>
+                <a href="{{ url_for('email.compose', to=contact.email, next=url_for('crm.view_lead', contact_id=contact.id)) }}" class="btn btn-info btn-sm w-sm waves-effect m-t-10 waves-light">Email</a>#}
+
+
+                <div class="text-left m-t-40">
+                    <p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15">{{ user }}</span></p>
+                    <p class="text-muted font-13"><strong>Company :</strong> <span class="m-l-15">{{ user.account }}</span></p>
+
+                    <p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">{{ user.phone }}</span></p>
+
+                    <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">{{ user.email }}</span></p>
+                </div>
+                {% if false %}
+                <ul class="social-links list-inline m-t-30">
+                    <li class="list-inline-item">
+                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a>
+                    </li>
+                </ul>
+                {% endif %}
+
+            </div>
+
+        </div> <!-- end card-box -->
+
+    </div> <!-- end col -->
+
+
+    <div class="col-lg-8 col-xl-9">
+        <div class="card-box">
+            <ul class="nav nav-tabs tabs-bordered">
+                <li class="nav-item">
+                    <a href="#details" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        DETAILS
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#opportunities" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                        OPPORTUNITIES
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#history" data-toggle="tab" aria-expanded="false" class="nav-link">
+                        HISTORY
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane" id="details">
+                  <div class="pb-5">
+                    {% include 'settings/forms/profile.html' %}
+                  </div>
+                </div>
+                <div class="tab-pane active" id="opportunities">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            TBD
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="history">
+                  {#{% include 'crm/widgets/history.html' %}#}
+                </div>
+            </div>
+        </div>
+    </div> <!-- end col -->
+  </div>
+  <!-- end row -->
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'common/backend_template.html' %}
+{% block content %}
+<div class="row mt-3">
+  <div class="col-lg-12">
+    <div class="card-box">
+        <h4 class="m-t-0 header-title">Domain Details</h4>
+        <p class="text-muted font-14 m-b-20">
+            View your domain settings here.
+        </p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Type</th>
+                <th>Host</th>
+                <th>Data</th>
+                <th>Valid</th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for dns in domain.dns_records %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ dns.type }}</td>
+                    <td>{{ dns.host }}</td>
+                    <td>{{ dns.data }}</td>
+                    <td>{% if dns.valid %}<span class="text-success"><i class="fa fa-check-circle-o"></i>Verified</span>{% else %}<span class="text-danger"><i class="fa fa-times"></i>Not Verified</span>{% endif %}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+  </div>
+
+</div><!-- End row -->
+{% endblock %}

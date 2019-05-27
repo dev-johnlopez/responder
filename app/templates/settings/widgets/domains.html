@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Domain</th>
+        <th>Verified?</th>
+    </tr>
+    </thead>
+    <tbody>
+      {% for domain in account.domains %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ domain.domain }}</td>
+            <td>{% if domain.valid %}<span class="text-success"><i class="fa fa-check-circle-o"></i>Verified</span>{% else %}<a href="{{ url_for('settings.validate_domain', domain_id=domain.id) }}" class="btn btn-primary btn-sm">Verify</a>{% endif %}</td>
+            <td class="actions">
+                <a href="{{ url_for('settings.view_domain', domain_id=domain.id) }}" class="on-default view-row" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"><i class="mdi mdi-magnify"></i></a>
+                <a href="{{ url_for('settings.delete_domain', domain_id=domain.id) }}" class="on-default remove-row" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+            </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>

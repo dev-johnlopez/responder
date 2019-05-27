@@ -1,12 +1,6 @@
 <!-- ========== Left Sidebar Start ========== -->
 <div class="left side-menu">
   <div class="sidebar-inner slimscrollleft">
-      <!--- Divider -->
-      {#<div class="row mt-3 mx-1">
-        <div class="col-12">
-          <a href="mail-compose.html" class="btn btn-primary btn-rounded btn-custom btn-block waves-effect waves-light">Compose</a>
-        </div>
-      </div>#}
       <div id="sidebar-menu">
           <ul>
               {#<li class="menu-title">Main</li>#}
@@ -22,6 +16,7 @@
                   <ul class="list-unstyled">
                       <li><a href="{{ url_for('marketing.dashboard') }}">Dashboard</a></li>
                       <li><a href="{{ url_for('marketing.campaigns') }}">Campaigns</a></li>
+                      <li><a href="{{ url_for('marketing.templates') }}">Templates</a></li>
                       <li><a href="{{ url_for('marketing.sequences') }}">Follow Up Sequences</a></li>
                   </ul>
               </li>
@@ -32,8 +27,8 @@
                   <ul class="list-unstyled">
                       <li><a href="{{ url_for('crm.dashboard') }}">Dashboard</a></li>
                       <li><a href="{{ url_for('crm.all_leads') }}">All Leads</a></li>
-
                       <li><a href="{{ url_for('crm.new_lead') }}">Add Lead</a></li>
+                      <li><a href="{{ url_for('crm.upload') }}">Bulk Import</a></li>
                   </ul>
               </li>
 
@@ -46,6 +41,25 @@
                       <li><a href="{{ url_for('deals.active') }}">Active Deals</a></li>
                   </ul>
               </li>
+              <li class="has_sub">
+                  <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                          class="ti-settings"></i><span> Settings </span> <span class="menu-arrow"></span> </a>
+                  <ul class="list-unstyled">
+                      <li><a href="{{ url_for('settings.my_profile') }}">My Profile</a></li>
+                      <li><a href="{{ url_for('settings.index') }}">Company Settings</a></li>
+                      <li><a href="{{ url_for('settings.email') }}">Email Configuration</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="{{ url_for_security('logout') }}" class="waves-effect waves-primary"><i
+                          class="ti-power-off"></i><span> Logout </span></a>
+              </li>
+              {% if current_user.is_admin() %}
+                <li>
+                    <a href="{{ url_for('admin.index') }}" class="waves-effect waves-primary"><i
+                            class="ti-infinite"></i><span> Admin </span></a>
+                </li>
+              {% endif %}
           </ul>
 
           <div class="clearfix"></div>

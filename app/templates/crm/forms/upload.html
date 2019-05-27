@@ -1,0 +1,76 @@
+<form method="POST" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+  {% with form = form.options.form %}
+  {{ form.hidden_tag() }}
+  <div class="row mt-3">
+    <div class="col-lg-6">
+      <div class="card-box">
+        <h4 class="m-t-0 header-title">Contact Types</h4>
+        <p class="text-muted font-14 m-b-20">
+            Classify you contacts by the actions they perform.
+        </p>
+        <div class="checkbox">
+            {{ form.is_seller() }}
+            <label for="{{ form.is_seller.id }}">
+              Seller
+            </label>
+        </div>
+        <div class="checkbox">
+            {{ form.is_investor() }}
+            <label for="{{ form.is_investor.id }}">
+              Investor
+            </label>
+        </div>
+        <div class="checkbox">
+            {{ form.is_wholesaler() }}
+            <label for="{{ form.is_wholesaler.id }}">
+              Wholesaler
+            </label>
+        </div>
+        <div class="checkbox">
+            {{ form.is_broker() }}
+            <label for="{{ form.is_broker.id }}">
+              Broker
+            </label>
+        </div>
+        <div class="checkbox">
+            {{ form.is_property_manager() }}
+            <label for="{{ form.is_property_manager.id }}">
+              Property Manager
+            </label>
+        </div>
+        <div class="checkbox">
+            {{ form.is_developer() }}
+            <label for="{{ form.is_developer.id }}">
+              Developer
+            </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card-box">
+        <h4 class="m-t-0 header-title">Motivation Indicators</h4>
+        <p class="text-muted font-14 m-b-20">
+            Is this a marketing list? Indicate all contact motivation indicators to use as a reference in the future.
+        </p>
+        {% for indicator in form.indicators %}
+        <div class="checkbox">
+            {{ indicator.form.id() }}
+            {{ indicator.form.enabled() }}
+            <label for="{{ indicator.form.enabled.id }}">
+                {{ indicator.form.name.data }}
+            </label>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endwith %}
+  <div class="row mt-3">
+    <div class="card-box">
+      {{ form.file() }}
+      <button type="submit" class="btn btn-primary">Upload</button>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</form>

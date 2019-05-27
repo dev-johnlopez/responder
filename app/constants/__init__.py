@@ -1,1 +1,1 @@
-
+import template as TEMPLATE

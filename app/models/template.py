@@ -3,7 +3,7 @@ from app.models.mixins import AuditMixin
 from app.constants import TEMPLATE
 
 class Template(db.Model, AuditMixin):
-    __tablename__ = 'campaign'
+    __tablename__ = 'template'
     id = db.Column(db.Integer, primary_key=True)
     touches = db.relationship("TouchPoint", back_populates="template")
     name = db.Column(db.String(255))

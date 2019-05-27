@@ -1,7 +1,7 @@
 {% extends 'common/backend_template.html' %}
 
 {% block breadcrumb %}
-<li class="breadcrumb-item">CRM</li>
+<li class="breadcrumb-item"><a href="{{ url_for('crm.dashboard') }}">CRM</a></li>
 <li class="breadcrumb-item active">New Lead</li>
 {% endblock %}
 

@@ -75,6 +75,7 @@
                 </div>
             </div>
             {% endif %}
+            {% include 'common/components/flash_messages.html' %}
             {% block content %}{% endblock %}
           </div>
         </div>
@@ -107,6 +108,8 @@
   <script src="{{ url_for('static', filename='backend/js/jquery.nicescroll.js') }}"></script>
   <script src="{{ url_for('static', filename='backend/js/jquery.scrollTo.min.js') }}"></script>
   <script src="{{ url_for('static', filename='backend/plugins/switchery/switchery.min.js') }}"></script>
+  <!-- SheetJS -->
+  <script lang="javascript" src="{{ url_for('static', filename='backend/js/sheetjs/xlsx.full.min.js') }}"></script>
   {% endblock %}
 
   {% block page_javascript %}{% endblock %}

@@ -1,0 +1,48 @@
+<form id="basic-form" action="#">
+    <div>
+        <h3>Account</h3>
+        <section>
+          <div id="drop">Drop a spreadsheet file here to see sheet data</div>
+          <input type="file" name="xlfile" id="xlf" /> ... or click here to select a file
+
+          <textarea id="b64data">... or paste a base64-encoding here</textarea>
+          <input type="button" id="dotext" value="Click here to process the base64 text" onclick="b64it();"/><br />
+          <b>Advanced Demo Options:</b>
+          Use Web Workers: (when available) <input type="checkbox" name="useworker" checked>
+          Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" checked>
+          <pre id="out"></pre>
+          <div id="htmlout"></div>
+
+        </section>
+        <h3>Profile</h3>
+        <section>
+            <div id="handsometable"></div>
+        </section>
+        <h3>Hints</h3>
+        <section>
+            <div class="form-group clearfix">
+                <div class="col-lg-12">
+                    <ul class="list-unstyled w-list">
+                        <li><b>First Name :</b> Jonathan </li>
+                        <li><b>Last Name :</b> Smith </li>
+                        <li><b>Emial:</b> jonathan@smith.com</li>
+                        <li><b>Address:</b> 123 Your City, Cityname. </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <h3>Finish</h3>
+        <section>
+            <div class="form-group clearfix">
+                <div class="col-lg-12">
+                    <div class="checkbox checkbox-primary">
+                        <input id="checkbox-h" type="checkbox">
+                        <label for="checkbox-h">
+                            I agree with the Terms and Conditions.
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</form>

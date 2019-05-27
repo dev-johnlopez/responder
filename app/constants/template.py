@@ -1,5 +1,5 @@
 # Data Provider
-UNKOWN = 0
+UNKNOWN = 0
 DIRECT_MAIL = 1
 EMAIL = 2
 TEXT_MESSAGE = 3

@@ -50,7 +50,7 @@
 {% endif %}
 {% endwith %}
 
-{% if current_user.is_authenticated %}
+{#{% if current_user.is_authenticated %}
 {% with tasks = current_user.get_tasks_in_progress() %}
 {% if tasks %}
     {% for task in tasks %}
@@ -63,4 +63,4 @@
     {% endfor %}
 {% endif %}
 {% endwith %}
-{% endif %}
+{% endif %}#}

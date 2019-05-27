@@ -23,3 +23,7 @@ from . import marketing
 deals_bp = Blueprint('deals', __name__)
 
 from . import deals
+
+settings_bp = Blueprint('settings', __name__)
+
+from . import settings
